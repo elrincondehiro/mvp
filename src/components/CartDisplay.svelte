@@ -10,9 +10,9 @@
     <p>Items en carrito: 
       {#each cartItems.items as item}
         <span class="cart-item">
-          {item.name}
+          {item.name} @ {item.price.toFixed(2)}€
           {#if item.quantity >= 0}
-            (x{item.quantity})
+            (x{item.quantity} = {(item.quantity*item.price).toFixed(2)})
           {/if}
         </span>
       {/each}

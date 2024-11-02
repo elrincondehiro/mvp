@@ -22,7 +22,13 @@ export const prerender = true;
     </div>
     
     <div class="flex-1">
-      <h3 class="text-lg font-semibold">{item.name}</h3>
+      <input 
+        type="text"
+        id="productName"
+        name="productName"
+        value={item.name}
+        class="text-lg font-semibold w-full p-1 border rounded"
+      />
       <p class="text-gray-600">Precio: {item.price.toFixed(2)}€</p>
       
       <div class="mt-2 flex items-center gap-2">
@@ -46,19 +52,28 @@ export const prerender = true;
 <script>
   // Manejamos la lógica del lado del cliente
   const quantityInput = document.querySelector('input[name="quantity"]') as HTMLInputElement;
+  const productNameInput = document.querySelector('input[name="productName"]') as HTMLInputElement;
   const addToCartBtn = document.querySelector('#addToCartButton') as HTMLElement;
-  if (quantityInput && addToCartBtn) {
+  if (quantityInput && addToCartBtn && productNameInput) {
+
+    const updateCartItem = () => {
+      addToCartBtn.dataset.productQty = quantityInput.value;
+      addToCartBtn.dataset.productName = productNameInput.value;
+    }
+
+    quantityInput.addEventListener('change', updateCartItem);
+    productNameInput.addEventListener('change', updateCartItem);
     // Actualizamos el item cuando cambia la cantidad
-    quantityInput.addEventListener('change', (e) => {
-      const newQuantity = parseInt((e.target as HTMLInputElement).value);
-      console.log(newQuantity);
-      // Actualizamos el componente AddToCartBtn con la nueva cantidad
-      const currentItem = JSON.parse(addToCartBtn.dataset.productQty || '{}');
-      console.log(currentItem);
-      // currentItem = newQuantity;
+    // quantityInput.addEventListener('change', (e) => {
+    //   const newQuantity = parseInt((e.target as HTMLInputElement).value);
+    //   console.log(newQuantity);
+    //   // Actualizamos el componente AddToCartBtn con la nueva cantidad
+    //   const currentItem = JSON.parse(addToCartBtn.dataset.productQty || '{}');
+    //   console.log(currentItem);
+    //   // currentItem = newQuantity;
       
-      // Actualizamos las props del componente
-      addToCartBtn.dataset.productQty = JSON.stringify(newQuantity);
-    });
+    //   // Actualizamos las props del componente
+    //   addToCartBtn.dataset.productQty = JSON.stringify(newQuantity);
+    // });
   }
 </script>
