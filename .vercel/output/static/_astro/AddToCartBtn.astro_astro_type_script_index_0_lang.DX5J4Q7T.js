@@ -1,0 +1,1 @@
+import{a as o}from"./cartStore.tBWmdLPT.js";const t=document.getElementById("addToCartButton");t?.addEventListener("click",()=>{t.dataset.productId,o({id:"hola",name:"producto",imageSrc:"http://www.google.es",price:19.95,quantity:2}),console.log("succces")});

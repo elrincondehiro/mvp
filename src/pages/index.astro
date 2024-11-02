@@ -1,6 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Card2 from '../components/Card2.astro';
+
+import {cartStore, addToCart} from '@/lib/cartStore';
+import type { Cart, CartItem} from '@/lib/cartStore';
+import {isCartFlyoutOpen} from '@/lib/ministore';
+import CartContent from '@/components/CartContent.astro';
+import AddToCartBtn from '@/components/AddToCartBtn.astro';
+import CartDisplay from '@/components/CartDisplay.svelte';
+
+
+const item: CartItem = {
+	id: "item1",
+	name: "producto 1",
+	quantity: 1,
+	price: 10.95,
+	imageSrc: "https://fastly.picsum.photos/id/518/200/200.jpg?hmac=nY2cAnZ0_ItWhhAsJ_XL3RsNkDo7_zobodK8FWIoCDM"
+}
+export const prerender = true;
 ---
 
 <Layout title="Welcome to Astro.">
@@ -39,11 +57,14 @@ import Card from '../components/Card.astro';
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 		</p>
 		<ul role="list" class="link-card-grid">
-			<Card
+			{isCartFlyoutOpen.get() && <Card2
+
 				href="https://docs.astro.build/"
 				title="Documentation"
 				body="Learn how Astro works and explore the official API docs."
-			/>
+				img="https://fastly.picsum.photos/id/518/200/200.jpg?hmac=nY2cAnZ0_ItWhhAsJ_XL3RsNkDo7_zobodK8FWIoCDM"
+				alt="imagen random"
+			/>}
 			<Card
 				href="https://astro.build/integrations/"
 				title="Integrations"
@@ -59,6 +80,9 @@ import Card from '../components/Card.astro';
 				title="Community"
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
+			<AddToCartBtn item={item}/>
+			<CartContent/>
+			<CartDisplay client:load/>
 		</ul>
 	</main>
 </Layout>
@@ -69,9 +93,10 @@ import Card from '../components/Card.astro';
 		padding: 1rem;
 		width: 800px;
 		max-width: calc(100% - 2rem);
-		color: white;
+		color: black;
 		font-size: 20px;
 		line-height: 1.6;
+		background-color: white;
 	}
 	.astro-a {
 		position: absolute;

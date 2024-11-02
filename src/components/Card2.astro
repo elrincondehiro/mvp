@@ -1,0 +1,24 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+  img: string;
+  alt: string;
+}
+
+const { href, title, body, img, alt } = Astro.props;
+---
+
+<li class="max-w-sm max-h-fit rounded-none overflow-hidden focus-within:shadow-2xl hover:shadow-2xl transition-all duration-600">
+    <a href={href}>
+
+      <div class="w-full max-h-24 h-10 bg-cyan-700 " style={{backgroundImage: `url(${img})`}}/>
+      <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{title}</div>
+          <p class="text-gray-700 text-base">
+              {body}
+          </p>
+      </div>
+    </a>
+</li>
