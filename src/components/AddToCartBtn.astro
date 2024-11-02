@@ -12,7 +12,7 @@ const {item} = Astro.props;
 
 ---
 
-<button class="add-to-cart-btn" id="addToCartButton" data-product-id={item.id} data-product-name={item.name} data-product-qty={item.quantity}>
+<button class="add-to-cart-btn" id="addToCartButton" data-product-id={item.id} data-product-name={item.name} data-product-qty={item.quantity} data-product-price={item.price}>
   Agregar al carrito
 </button>
 
@@ -22,8 +22,13 @@ const {item} = Astro.props;
   const button = document.getElementById('addToCartButton');
   button?.addEventListener('click', () => {
     
-    const productId = button.dataset.productId;
-    addToCart({id:"hola", name:"producto", imageSrc:"http://www.google.es", price: 19.95, quantity:2});
+    const productId = button.dataset.productId || "";
+    const productName = button.dataset.productName || "";
+    const productPrice = parseFloat(button.dataset.productPrice || "");
+    const productQty = parseInt(button.dataset.productQty|| "");
+    const item = {id: productId, name: productName, imageSrc:"", price: productPrice, quantity: productQty};
+    // console.log({item});
+    addToCart(item);
     console.log("succces");
   });
 </script>

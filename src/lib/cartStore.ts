@@ -24,18 +24,21 @@ export const cartStore = atom<Cart>({items: [], total: 0});
 
 export const addToCart = (product: CartItem) => {
     const currentCart = cartStore.get();
+    console.log(currentCart);
     const itemIndex = currentCart.items.findIndex(item => item.id === product.id);
-    let updatedCart : Cart;
+    console.log("current Index"+ itemIndex);
+    let updatedCart : Cart = {items: [],total: 0};
     if (itemIndex >= 0){
-        if (product.quantity<0 && currentCart.items[itemIndex].quantity+product.quantity < 0) product.quantity = -currentCart.items[itemIndex].quantity;
+        if (product.quantity<0 && currentCart.items[itemIndex].quantity+product.quantity < 0) {
+            product.quantity = -currentCart.items[itemIndex].quantity;
+        }
         updatedCart = {
             items: [...currentCart.items],
             total: currentCart.total + (product.price*product.quantity)
         };
         updatedCart.items[itemIndex].quantity+=product.quantity;
-        
-    }else{
-        if(product.quantity<0) product.quantity=0;
+        if (updatedCart.items[itemIndex].quantity==0) updatedCart.items.splice(itemIndex);    
+    }else if (product.quantity >0){
         updatedCart = {
             items: [...currentCart.items, product],
             total: currentCart.total+ (product.price*product.quantity)

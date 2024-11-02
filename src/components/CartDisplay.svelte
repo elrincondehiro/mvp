@@ -11,11 +11,14 @@
       {#each cartItems.items as item}
         <span class="cart-item">
           {item.name}
-          {#if item.quantity > 1}
+          {#if item.quantity >= 0}
             (x{item.quantity})
           {/if}
         </span>
       {/each}
+      <span class="cart-total">
+        Total: {cartItems.total.toFixed(2)} €
+      </span>
     </p>
   {:else}
     <p>Carrito vacío</p>

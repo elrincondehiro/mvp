@@ -9,6 +9,7 @@ import {isCartFlyoutOpen} from '@/lib/ministore';
 import CartContent from '@/components/CartContent.astro';
 import AddToCartBtn from '@/components/AddToCartBtn.astro';
 import CartDisplay from '@/components/CartDisplay.svelte';
+import CartItemPage from '@/components/CartItemPage.astro';
 
 
 const item: CartItem = {
@@ -22,6 +23,7 @@ export const prerender = true;
 ---
 
 <Layout title="Welcome to Astro.">
+	<main>
 		<svg
 			class="astro-a"
 			width="495"
@@ -79,10 +81,13 @@ export const prerender = true;
 				title="Community"
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
-			<AddToCartBtn item={item}/>
+			<!-- <AddToCartBtn item={item}/> -->
 			<CartContent/>
+			<CartItemPage item={item}/>
 			<CartDisplay client:load/>
+			
 		</ul>
+	</main>
 </Layout>
 
 <style>
