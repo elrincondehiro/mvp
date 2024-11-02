@@ -11,10 +11,12 @@ const { item } = Astro.props;
 export const prerender = true;
 ---
 
-<div class="cart-item-container p-4 border rounded-lg shadow-sm">
-  <div class="flex gap-4">
-    <div class="w-24 h-24">
-      <img 
+<div class="cart-item-container p-4 border rounded-none shadow-sm hover:shadow-2xl">
+  <div class="flex gap-4 ">
+    <div class="w-24 h-24 self-center">
+      <img  
+        role="img"
+        aria-label="imagen del producto" 
         src={item.imageSrc} 
         alt={item.name}
         class="w-full h-full object-cover rounded-md"
@@ -22,13 +24,16 @@ export const prerender = true;
     </div>
     
     <div class="flex-1">
-      <input 
-        type="text"
-        id="productName"
-        name="productName"
-        value={item.name}
-        class="text-lg font-semibold w-full p-1 border rounded"
-      />
+      <div class="mt-2 flex items-center gap-2">
+        <label for="productName" class="text-sm">Producto:</label>
+        <input 
+          type="text"
+          id="productName"
+          name="productName"
+          value={item.name}
+          class="text-lg font-semibold w-full p-1 border rounded"
+        />
+      </div>
       <p class="text-gray-600">Precio: {item.price.toFixed(2)}€</p>
       
       <div class="mt-2 flex items-center gap-2">
