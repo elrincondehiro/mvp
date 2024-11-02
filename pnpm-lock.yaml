@@ -20,6 +20,9 @@ importers:
       '@astrojs/vercel':
         specifier: ^7.8.2
         version: 7.8.2(astro@5.0.0-beta.6(rollup@4.24.3)(typescript@5.6.3))
+      '@vercel/speed-insights':
+        specifier: ^1.0.14
+        version: 1.0.14(svelte@5.1.9)
       astro:
         specifier: ^5.0.0-beta.6
         version: 5.0.0-beta.6(rollup@4.24.3)(typescript@5.6.3)
@@ -754,6 +757,29 @@ packages:
     resolution: {integrity: sha512-b2A7M+4yMHdWKY7xCC+kBEcnMrpaSE84CnuauTjhKKoCEeej0byJMAB8h/RBVnw/HdZOAFVcxR0Izr3LL24FwA==}
     engines: {node: '>=16'}
     hasBin: true
+
+  '@vercel/speed-insights@1.0.14':
+    resolution: {integrity: sha512-env1BkPddz1UaEZwBL4GmfRksMi2LbiYaKuoxMQjfLk83aEh7kkWMukkUhpQVs717NE6nnD+1+KO85GZHOZ4nQ==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@volar/kit@2.4.8':
     resolution: {integrity: sha512-HY+HTP9sSqj0St9j1N8l85YMu4w0GxCtelzkzZWuq2GVz0+QRYwlyc0mPH7749OknUAdtsdozBR5Ecez55Ncug==}
@@ -2995,6 +3021,10 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@vercel/speed-insights@1.0.14(svelte@5.1.9)':
+    optionalDependencies:
+      svelte: 5.1.9
 
   '@volar/kit@2.4.8(typescript@5.6.3)':
     dependencies:
