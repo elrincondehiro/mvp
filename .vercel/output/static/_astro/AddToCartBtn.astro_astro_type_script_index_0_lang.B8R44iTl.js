@@ -1,1 +1,0 @@
-import{a as d}from"./cartStore.2GLpkHHr.js";const t=document.getElementById("addToCartButton");t?.addEventListener("click",()=>{const c=t.dataset.productId||"",o=t.dataset.productName||"",e=parseFloat(t.dataset.productPrice||""),a=parseInt(t.dataset.productQty||"");d({id:c,name:o,imageSrc:"",price:e,quantity:a}),console.log("succces")});
