@@ -15,15 +15,16 @@ const url = getCldImageUrl({src: "2020_03_04_11_38_56_UTC_1_29cd0b0ad6"})
 const { prod } = Astro.props;
 ---
 <a class="flex flex-row gap-6 justify-start" href={prod.slug} target="_self">
-    <!-- <CldImage  
-        class="w-60  aspect-square object-cover rounded-md md:w-32" 
+    <CldImage   
         src='2020_03_04_11_38_56_UTC_1_29cd0b0ad6' 
-        height={500}
-        width={500}
+        height={1000}
+        width={1000}
+        crop="auto"
         alt="foto alteernativa"
+        sizes={"(max-width: 768px) 50vw, 5vw"}
         rawTransformations={['q_auto',  'f_auto']} 
-        /> -->
-    <img loading="eager" src={url} class="w-60 aspect-square object-cover rounded-md md:w-32"/>    
+        />
+    <!-- <img loading="eager" src={url} class="w-60 aspect-square object-cover rounded-md md:w-32" />     -->
     <div class="flex flex-col justify-center">
         <span>{prod.name} : {prod.price}</span>
         <label for="descripcion"> Descripcion:</label>
