@@ -1,6 +1,7 @@
 ---
 import { CldImage } from 'astro-cloudinary';
 import { getCldImageUrl } from 'astro-cloudinary/helpers';
+import { Image } from "astro:assets";
 interface Props{
     prod: {name: string,
     slug: string,
@@ -11,11 +12,12 @@ interface Props{
     active: boolean,
     featured: boolean}
 }
-const url = getCldImageUrl({src: "2020_03_04_11_38_56_UTC_1_29cd0b0ad6"})
+const url = getCldImageUrl({src: "2020_03_04_11_38_56_UTC_1_29cd0b0ad6"});
+console.log(url);
 const { prod } = Astro.props;
 ---
 <a class="flex flex-row gap-6 justify-start" href={prod.slug} target="_self">
-    <CldImage   
+    <!-- <CldImage   
         src='2020_03_04_11_38_56_UTC_1_29cd0b0ad6' 
         height={1000}
         width={1000}
@@ -23,7 +25,15 @@ const { prod } = Astro.props;
         alt="foto alteernativa"
         sizes={"(max-width: 768px) 50vw, 5vw"}
         rawTransformations={['q_auto',  'f_auto']} 
-        />
+        /> -->
+
+    <Image
+        src={url}
+        width={1000}
+        height={1000}
+        widths={[120, 250, 550, 1000]}
+        sizes={`(max-width: 360px) 120px, (max-width: 720px) 250px, (max-width: 1600px) 550px, 1000px`}
+        alt="alt Image" />
     <!-- <img loading="eager" src={url} class="w-60 aspect-square object-cover rounded-md md:w-32" />     -->
     <div class="flex flex-col justify-center">
         <span>{prod.name} : {prod.price}</span>

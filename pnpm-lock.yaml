@@ -20,6 +20,9 @@ importers:
       '@astrojs/vercel':
         specifier: ^7.8.2
         version: 7.8.2(astro@5.0.0-beta.6(@types/node@22.8.7)(rollup@4.24.3)(typescript@5.6.3))
+      '@unpic/astro':
+        specifier: ^0.0.47
+        version: 0.0.47(astro@5.0.0-beta.6(@types/node@22.8.7)(rollup@4.24.3)(typescript@5.6.3))
       '@vercel/speed-insights':
         specifier: ^1.0.14
         version: 1.0.14(svelte@5.1.9)
