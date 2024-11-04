@@ -1,4 +1,5 @@
 ---
+import { CldImage } from 'astro-cloudinary';
 interface Props{
     prod: {name: string,
     slug: string,
@@ -13,7 +14,13 @@ interface Props{
 const { prod } = Astro.props;
 ---
 <a class="flex flex-row gap-6 justify-start" href={prod.slug} target="_self">
-    <img loading="eager" src={prod.gallery[Math.floor(Math.random()*prod.gallery.length)]} class="w-60 aspect-square object-cover rounded-md md:w-32"/>    
+    <CldImage src="2020_03_04_11_38_56_UTC_1_29cd0b0ad6"
+  width= 128
+  height= 128
+  alt="foto alteernativa"
+  rawTransformations={['q_auto',  'f_auto']}
+/>
+    <!-- <img loading="eager" src={prod.gallery[Math.floor(Math.random()*prod.gallery.length)]} class="w-60 aspect-square object-cover rounded-md md:w-32"/>     -->
     <div class="flex flex-col justify-center">
         <span>{prod.name} : {prod.price}</span>
         <label for="descripcion"> Descripcion:</label>
