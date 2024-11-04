@@ -1,0 +1,78 @@
+---
+//Aqui ponemos ahora mismo los Articulos a Mano
+import ProductCardList from "@/components/ProductCardList.astro";
+const productos = [
+    {
+        name: "prod1",
+        slug: "prod1",
+        description: "descasdas dasdasdsa dasdas dripcion producto1",
+        price: 1.99,
+        stock: 10,
+        gallery: [
+            'https://picsum.photos/seed/WbdL8kkez/336/1965',
+            'https://picsum.photos/seed/fJpe2CX/750/3666',
+            'https://picsum.photos/seed/XQPvv/3618/58',
+            'https://picsum.photos/seed/qvmVgPhX/1561/2382',
+            'https://picsum.photos/seed/7ln8WyXP/2403/2453'],
+        active: true,
+        featured: false,
+    },
+    {
+        name: "prod2",
+        slug: "prod2",
+        description: "descripcion producto2",
+        price: 10.99,
+        stock: 2,
+        gallery: [
+            'https://picsum.photos/seed/WbdL8kkez/336/1965',
+            'https://picsum.photos/seed/fJpe2CX/750/3666',
+            'https://picsum.photos/seed/XQPvv/3618/58',
+            'https://picsum.photos/seed/qvmVgPhX/1561/2382',
+            'https://picsum.photos/seed/7ln8WyXP/2403/2453'],
+        active: false,
+        featured: false,
+    },
+    {
+        name: "prod3",
+        slug: "prod3",
+        description: "descripcion producto3",
+        price: 6.66,
+        stock: 6,
+        gallery: [
+            'https://picsum.photos/seed/WbdL8kkez/336/1965',
+            'https://picsum.photos/seed/fJpe2CX/750/3666',
+            'https://picsum.photos/seed/XQPvv/3618/58',
+            'https://picsum.photos/seed/qvmVgPhX/1561/2382',
+            'https://picsum.photos/seed/7ln8WyXP/2403/2453'],
+        active: true,
+        featured: false,
+    },
+    {
+        name: "prod5",
+        slug: "prod5",
+        description: "descripcion producto5",
+        price: 14.25,
+        stock: 20,
+        gallery: [
+            'https://picsum.photos/seed/WbdL8kkez/336/1965',
+            'https://picsum.photos/seed/fJpe2CX/750/3666',
+            'https://picsum.photos/seed/XQPvv/3618/58',
+            'https://picsum.photos/seed/qvmVgPhX/1561/2382',
+            'https://picsum.photos/seed/7ln8WyXP/2403/2453'],
+        active: true,
+        featured: false,
+    },];
+
+
+---
+
+<ul class="flex flex-col justify-center gap-10">
+    <li class="flex flex-row justify-center">Listado de Productos: </li>
+    {productos
+        .filter((producto) => producto.active==true)
+        .map((producto)=> {
+            return <li class="flex flex-col border-2 p-4 border-yellow-700 shadow-lg hover:shadow-2xl"><ProductCardList prod={producto}/></li>
+        })
+    }
+    
+</ul>

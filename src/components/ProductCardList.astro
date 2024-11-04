@@ -1,0 +1,24 @@
+---
+interface Props{
+    prod: {name: string,
+    slug: string,
+    description: string,
+    price: number,
+    stock: number,
+    gallery: string[],
+    active: boolean,
+    featured: boolean}
+}
+
+const { prod } = Astro.props;
+---
+<a class="flex flex-row gap-6 justify-start" href={prod.slug} target="_self">
+    <img src={prod.gallery[Math.floor(Math.random()*prod.gallery.length)]} class="w-60 aspect-square object-cover rounded-md md:w-32"/>    
+    <div class="flex flex-col justify-center">
+        <span>{prod.name} : {prod.price}</span>
+        <label for="descripcion"> Descripcion:</label>
+        <p class="w-full"  id="descripcion"> {prod.description}</p>
+        
+    </div>
+</a>
+<button class="border-2 border-red-900 flex ml-auto mr-4 mb-4 px-4 py-2"> add to cart</button>

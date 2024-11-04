@@ -5,21 +5,21 @@
   $: cartItems = $cartStore;
 </script>
 
-<div class="cart-display">
+<div class="flex flex-col cart-display">
   {#if cartItems && cartItems.items.length > 0}
-    <p>Items en carrito: 
+    <p>Items en carrito:</p> 
       {#each cartItems.items as item}
-        <span class="cart-item">
-          {item.name} @ {item.price.toFixed(2)}€
+        <p class="mx-5 text-base cart-item">
+          <span class="font-bold">{item.name}</span> @ {item.price.toFixed(2)}€
           {#if item.quantity >= 0}
-            (x{item.quantity} = {(item.quantity*item.price).toFixed(2)})
+            (x{item.quantity} = {(item.quantity*item.price).toFixed(2)}€)
           {/if}
-        </span>
+        </p>
       {/each}
       <span class="cart-total">
-        Total: {cartItems.total.toFixed(2)} €
+        Total: <strong>{cartItems.total.toFixed(2)} €</strong>
       </span>
-    </p>
+    <!-- </p> -->
   {:else}
     <p>Carrito vacío</p>
   {/if}
