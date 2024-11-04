@@ -14,12 +14,7 @@ interface Props{
 const { prod } = Astro.props;
 ---
 <a class="flex flex-row gap-6 justify-start" href={prod.slug} target="_self">
-    <CldImage src="2020_03_04_11_38_56_UTC_1_29cd0b0ad6"
-  width= 128
-  height= 128
-  alt="foto alteernativa"
-  rawTransformations={['q_auto',  'f_auto']}
-/>
+    <CldImage class="w-60 aspect-square object-cover rounded-md md:w-32"src='2020_03_04_11_38_56_UTC_1_29cd0b0ad6' height={300} width={300} alt="foto alteernativa" rawTransformations={['q_auto',  'f_auto']}/>
     <!-- <img loading="eager" src={prod.gallery[Math.floor(Math.random()*prod.gallery.length)]} class="w-60 aspect-square object-cover rounded-md md:w-32"/>     -->
     <div class="flex flex-col justify-center">
         <span>{prod.name} : {prod.price}</span>
