@@ -13,7 +13,7 @@ interface Props{
 const { prod } = Astro.props;
 ---
 <a class="flex flex-row gap-6 justify-start" href={prod.slug} target="_self">
-    <img src={prod.gallery[Math.floor(Math.random()*prod.gallery.length)]} class="w-60 aspect-square object-cover rounded-md md:w-32"/>    
+    <img loading="eager" src={prod.gallery[Math.floor(Math.random()*prod.gallery.length)]} class="w-60 aspect-square object-cover rounded-md md:w-32"/>    
     <div class="flex flex-col justify-center">
         <span>{prod.name} : {prod.price}</span>
         <label for="descripcion"> Descripcion:</label>
