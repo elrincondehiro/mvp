@@ -7,11 +7,11 @@ import { imageService } from "@unpic/astro/service";
 
 // https://astro.build/config
 export default defineConfig({
-  image: {
-    service: imageService({
-      placeholder: "blurhash",
-    }),
-  },
+  // image: {
+  //   service: imageService({
+  //     placeholder: "blurhash",
+  //   }),
+  // },
   output: 'server',
   integrations: [tailwind(), svelte()],
   adapter: vercel()
