@@ -64,14 +64,16 @@ const productos = [
     },];
 
 
+
+const numCols=2;
 ---
 
-<ul class="flex flex-col justify-center gap-10">
-    <li class="flex flex-row justify-center">Listado de Productos: </li>
+<ul class="grid grid-cols-[repeat(var(--numCols),_minmax(200px,_1fr))] gap-4 grid-col" style={{'--numCols': numCols}}>
+    <li class="col-[span_var(--numCols)_/span_var(--numCols)] flex justify-center" style={{'--numCols' : numCols}}>Listado de Productos: </li>
     {productos
         .filter((producto) => producto.active==true)
         .map((producto)=> {
-            return <li class="flex flex-col border-2 p-4 border-yellow-700 shadow-lg hover:shadow-2xl"><ProductCardList prod={producto}/></li>
+            return <li><ProductCardList prod={producto}/></li>
         })
     }
     

@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import HeroImage from '@/components/HeroImage.astro';
+import Layout from "@/layouts/Layout.astro";
+import '@/styles/globals.css';
+
+
+export async function getStaticPaths () {
+    const categories = await getCollection('categories');
+    return categories.map(({id, data}) => ({
+        params: {slug: id},
+        props: {data},
+    }))
+    
+}
+
+const {slug} = Astro.params;
+const {data} = Astro.props;
+export const prerender = true;
+---
+
+<Layout title={slug}>
+    <div class="w-[calc(100%-2rem)] max-w-7xl mx-auto">
+    <HeroImage imageUrl={data.cover} title={data.name} subtitle={data.description} alt={data.description}/>
+    </div>
+    <h1 class="text-black">jkasjdkaslkdaslk {data.description}</h1>
+</Layout>

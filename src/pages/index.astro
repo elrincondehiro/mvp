@@ -1,34 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Card2 from '../components/Card2.astro';
-
-import {cartStore, addToCart} from '@/lib/cartStore';
-import type { Cart, CartItem} from '@/lib/cartStore';
-import {isCartFlyoutOpen} from '@/lib/ministore';
-import CartContent from '@/components/CartContent.astro';
-import AddToCartBtn from '@/components/AddToCartBtn.astro';
-import CartDisplay from '@/components/CartDisplay.svelte';
-import CartItemPage from '@/components/CartItemPage.astro';
-import ProductList from '@/components/ProductList.astro';
-
-
-
-const item: CartItem = {
-	id: "item1",
-	name: "producto 1",
-	quantity: 1,
-	price: 10.95,
-	imageSrc: "https://fastly.picsum.photos/id/518/200/200.jpg?hmac=nY2cAnZ0_ItWhhAsJ_XL3RsNkDo7_zobodK8FWIoCDM"
-}
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import CardShad from '@/components/CardShad.astro';
 export const prerender = true;
+import '@/styles/globals.css';
+
+
+const categories =  await getCollection('categories');
 ---
 
 <Layout title="Welcome to Astro.">
-	<div class=" flex items-center justify-around  min-h-20 flex-col w-[calc(100%-2rem)] max-w-7xl mx-auto bg-blue-900 pb-10 gap-10"> 
-		<span>Componente Carrito</span>
+	<!-- <div class=" flex items-center justify-around  min-h-20 flex-col w-[calc(100%-2rem)] max-w-7xl mx-auto bg-blue-900 pb-10 gap-10">  -->
+	 <div class="grid grid-cols-1 gap-4 w-[calc(100%-2rem)] max-w-7xl mx-auto lg:grid-cols-4 sm:grid-cols-2 bg-blue-400 px-10 py-5 mb-5">
+		<span class="sm:col-span-2 lg:col-span-4 flex justify-center">Componentes Carrito</span>
+		{categories.filter((category) => category.data.active).map((category) => {
+			const prop = {id: category.id, title: category.data.name, description: category.data.description, imageUrl: category.data.cover}		
+
+		return <CardShad category={prop}/>
 		
-		<ProductList/>
-		
+	})}
 	</div>
 </Layout>
