@@ -19,9 +19,9 @@ const { category } = Astro.props;
 
 <a href={`/category/${category.id}`} class="block group"  >
   <Card  className="overflow-hidden transition-all duration-300 hover:shadow-2xl h-full flex flex-col">
-    <div  transition:name={`img-hero-${category.id}`} class="relative aspect-video overflow-hidden rounded-lg">
+    <div   class="relative aspect-video overflow-hidden rounded-lg">
       <Image
-       
+        transition:name={`img-hero-${category.id}`}
         src={category.imageUrl}
         alt={category.title}
         width={400}
@@ -31,11 +31,11 @@ const { category } = Astro.props;
     </div>
     <CardHeader>
       <CardTitle className="text-xl md:text-2xl transition-colors duration-300 group-hover:text-primary">
-        <span transition:name={`title-hero-${category.id}`} class="text-red-600">  {category.title} </span>
+        {category.title}
       </CardTitle>
     </CardHeader>
     <CardContent className="flex-grow">
-      <p transition:name={`subtitle-hero-${category.id}`} class="text-sm text-red-600 text-muted-foreground line-clamp-2">{category.description}</p>
+      <p  class="text-sm text-muted-foreground line-clamp-2">{category.description}</p>
     </CardContent>
     <CardFooter>
       <span class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background h-10 px-4 py-2 w-full transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
