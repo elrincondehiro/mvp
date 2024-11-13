@@ -19,9 +19,9 @@ const { category } = Astro.props;
 
 <a href={`/category/${category.id}`} class="block group"  >
   <Card  className="overflow-hidden transition-all duration-300 hover:shadow-2xl h-full flex flex-col">
-    <div   class="relative aspect-video overflow-hidden rounded-lg">
+    <div  transition:name={`img-hero-${category.id}`} class="relative aspect-video overflow-hidden rounded-lg">
       <Image
-        transition:name={`img-hero-${category.id}`}
+       
         src={category.imageUrl}
         alt={category.title}
         width={400}
